@@ -6,10 +6,10 @@ This package provides the basic framework for the Utopia suite. It provides mech
 
 In most cases, you will want the following four packages installed.
 
-  1 **pyutopia** (this package) provides the base mechanisms for defining and loading plugins, adding tools, and manipulating citations.
-  2 [**pyutopia-tools**](https://github.com/lostislandlabs/python-utopia-tools) provides utilities to various common resources such as PubMed, Crossref, ArXiv, etc. It also provides access utilities for working with the various Utopia servers. These tools can be used to create bespoke applications.
-  3 [**pyutopia-plugins-common**](https://github.com/lostislandlabs/python-utopia-plugins-common) holds all the standard plugins used by the resolution pipeline.
-  4 [**kend**](https://github.com/lostislandlabs/kend) provides utilities for accessing a kend server, and for parsing and serialising its data formats.
+  1. **pyutopia** (this package) provides the base mechanisms for defining and loading plugins, adding tools, and manipulating citations.
+  2. [**pyutopia-tools**](https://github.com/lostislandlabs/python-utopia-tools) provides utilities to various common resources such as PubMed, Crossref, ArXiv, etc. It also provides access utilities for working with the various Utopia servers. These tools can be used to create bespoke applications.
+  3. [**pyutopia-plugins-common**](https://github.com/lostislandlabs/python-utopia-plugins-common) holds all the standard plugins used by the resolution pipeline.
+  4. [**kend**](https://github.com/lostislandlabs/kend) provides utilities for accessing a kend server, and for parsing and serialising its data formats.
 
 ### Prerequisites
 
