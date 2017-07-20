@@ -7,9 +7,9 @@ This package provides the basic framework for the Utopia suite. It provides mech
 In most cases, you will want the following four packages installed.
 
   1. **pyutopia** (this package) provides the base mechanisms for defining and loading plugins, adding tools, and manipulating citations.
-  2. [**pyutopia-tools**](https://github.com/lostislandlabs/python-utopia-tools) provides utilities to various common resources such as PubMed, Crossref, ArXiv, etc. It also provides access utilities for working with the various Utopia servers. These tools can be used to create bespoke applications.
-  3. [**pyutopia-plugins-common**](https://github.com/lostislandlabs/python-utopia-plugins-common) holds all the standard plugins used by the resolution pipeline.
-  4. [**kend**](https://github.com/lostislandlabs/kend) provides utilities for accessing a kend server, and for parsing and serialising its data formats.
+  1. [**pyutopia-tools**](https://github.com/lostislandlabs/python-utopia-tools) provides utilities to various common resources such as PubMed, Crossref, ArXiv, etc. It also provides access utilities for working with the various Utopia servers. These tools can be used to create bespoke applications.
+  1. [**pyutopia-plugins-common**](https://github.com/lostislandlabs/python-utopia-plugins-common) holds all the standard plugins used by the resolution pipeline.
+  1. [**kend**](https://github.com/lostislandlabs/kend) provides utilities for accessing a kend server, and for parsing and serialising its data formats.
 
 ### Prerequisites
 
@@ -21,6 +21,26 @@ You can either clone these repositories and build them yourself, or you can inst
 
 ```
 $ pip install pyutopia-plugins-common # will pull in everything needed
+```
+
+## Usage
+
+Utopia can be thought of as being in three separate parts: the _framework_, the _tools_, and the _plugins_. The framework is the low-level environment into which the tools and plugins fit, allowing them to extend the core functionality of Utopia via namespace packages and plugin resolution.
+
+### Using Utopia's tools
+
+The [**pyutopia-tools**](https://github.com/lostislandlabs/python-utopia-tools) package provides a set of Python modules for interacting with common services available in the bioinformatics and life sciences spaces. They can be found within the `utopia.tools` package.
+
+#### Using `utopia.tools.arxiv`
+
+```python
+>>> import utopia.tools.arxiv as arxiv
+>>> id = '1707.06154'
+>>> arxiv.url(id)
+'http://arxiv.org/abs/1707.06154'
+>>> xml = arxiv.fetchXML(id) # Returns the ATOM item XML for that ID
+>>> citation = arxiv.parseXML(xml) # Returns a citation dictionary
+>>> citation = arxiv.resolve(id) # Wraps up the previous three steps
 ```
 
 ## License
