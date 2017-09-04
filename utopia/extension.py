@@ -22,8 +22,9 @@ class MetaExtension(type):
             cls.__extensions[cls._typeName()] = cls
             cls.__uuid__ = uuid.uuid4().urn
             logger.debug('    Found {}'.format(cls))
-            # Give this class' module the name of its loaded plugin
-            inspect.getmodule(cls).__dict__['__plugin__'] = inspect.stack()[-3][0].f_globals['__name__']
+            # Give this class's module the name of its loaded plugin
+            if len(inspect.stack()) >= 5:
+                inspect.getmodule(cls).__dict__['__plugin__'] = inspect.stack()[-5][0].f_globals['__name__']
 
     def __del__(cls):
         # Keep track of subclasses of Extension
@@ -61,7 +62,7 @@ def _makeLoader(module_path):
         def get_data(self, data_path):
             try:
                 path = os.path.join(module_path, data_path)
-                return open(path, 'r').read()
+                return open(path, 'rb').read()
             except:
                 logger.error('Error opening module data file', exc_info=True)
     return Loader()
